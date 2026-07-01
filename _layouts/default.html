@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{{ page.title }}</title>
+{% if page.description %}<meta name="description" content="{{ page.description }}" />{% endif %}
+<meta property="og:title" content="{{ page.og_title | default: page.title }}" />
+{% if page.og_description or page.description %}<meta property="og:description" content="{{ page.og_description | default: page.description }}" />{% endif %}
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://coachlibra.org{{ page.url }}" />
+<meta name="theme-color" content="#f6efe0" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..600&family=Hanken+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+<script>document.documentElement.className='js';</script>
+<link rel="stylesheet" href="/assets/css/site.css?v={{ site.time | date: '%s' }}" />
+</head>
+<body class="{{ page.bodyclass }}">
+{% include header.html %}
+{{ content }}
+{% include footer.html %}
+<script>
+(function(){
+ try{
+  var y=document.getElementById('yr'); if(y){y.textContent=new Date().getFullYear();}
+  var nav=document.getElementById('nav'),tg=document.getElementById('navtoggle'),nl=document.getElementById('navlinks');
+  if(tg&&nl){tg.addEventListener('click',function(){nl.classList.toggle('open');});
+    nl.addEventListener('click',function(e){if(e.target.tagName==='A'){nl.classList.remove('open');}});}
+  window.addEventListener('scroll',function(){if(nav){nav.classList.toggle('scrolled',window.scrollY>12);}},{passive:true});
+
+  // hero intro
+  var hero=document.querySelector('.hero');
+  requestAnimationFrame(function(){requestAnimationFrame(function(){if(hero)hero.classList.add('loaded');});});
+
+  // scroll reveal
+  var els=[].slice.call(document.querySelectorAll('.reveal'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    els.forEach(function(el){io.observe(el);});
+  } else { els.forEach(function(el){el.classList.add('in');}); }
+
+  // reserve form -> mailto (no backend yet)
+  var f=document.getElementById('reserveForm');
+  if(f){f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var em=(document.getElementById('reserveEmail').value||'').trim();
+    var subj=encodeURIComponent("I'd like to begin a legacy book");
+    var body=encodeURIComponent("Hi Coach Libra Legacy team,\n\nI'd like to begin a family legacy book"+(em?(" — my email is "+em):"")+".\n\nA little about who it's for:\n");
+    window.location.href="mailto:hello@coachlibra.org?subject="+subj+"&body="+body;
+  });}
+ }catch(err){ /* failsafe: never leave content hidden if JS breaks */ document.documentElement.className=''; }
+})();
+</script>
+</body>
+</html>
