@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coach Libra Legacy — Your parent's life, in their own voice</title>
+<meta name="description" content="A family legacy book turns your mom or dad's memories into a beautiful keepsake — captured in their own voice, written in their own words, and kept for every generation. They just talk. We do the rest." />
+<meta property="og:title" content="Coach Libra Legacy — The stories only they can tell" />
+<meta property="og:description" content="A new kind of book: your parent's life, in their real voice, woven with their photographs and kept forever. They talk; we do the rest." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://coachlibra.org/" />
+<meta name="theme-color" content="#f6efe0" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..600&family=Hanken+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+<script>document.documentElement.className='js';</script>
+<style>
+:root{
+  --paper:#f6efe0; --paper-2:#fbf6ec; --card:#fffdf8;
+  --ink:#241a12; --ink-soft:#5c5142; --ink-faint:#8a7c68;
+  --oxblood:#7c2d27; --oxblood-deep:#5e211d;
+  --gold:#b08a45; --gold-soft:#d8b870; --gold-line:rgba(176,138,69,.34);
+  --sage:#3f6b46;
+  --line:rgba(36,26,18,.13); --line-2:rgba(36,26,18,.08);
+  --maxw:1160px;
+  --shadow:0 30px 70px -46px rgba(60,36,18,.55);
+  --shadow-sm:0 14px 34px -24px rgba(60,36,18,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{
+  font-family:"Hanken Grotesk",sans-serif;color:var(--ink);background:var(--paper);
+  line-height:1.65;font-size:clamp(1rem,.97rem + .2vw,1.09rem);font-weight:400;overflow-x:hidden;
+}
+/* layered warm paper + grain */
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:radial-gradient(130% 85% at 78% -12%, #fcf7ee 0%, transparent 52%),
+             radial-gradient(120% 95% at -5% 108%, #efe1c9 0%, transparent 48%),
+             radial-gradient(90% 60% at 50% 40%, #f8f1e3 0%, transparent 70%), var(--paper)}
+body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.045;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+::selection{background:var(--oxblood);color:var(--paper)}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.serif{font-family:"Fraunces",serif}
+.eyebrow{font-family:"Hanken Grotesk",sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:600;color:var(--gold);}
+h1,h2,h3{font-family:"Fraunces",serif;font-weight:400;letter-spacing:-.015em;line-height:1.06;color:var(--ink)}
+h2{font-size:clamp(1.9rem,1.4rem + 2.2vw,3rem)}
+h3{font-size:1.28rem;line-height:1.2}
+p{color:var(--ink-soft)}
+em{font-style:italic}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.55em;font-family:"Hanken Grotesk",sans-serif;font-weight:600;font-size:.98rem;
+  padding:.85em 1.6em;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .25s ease,background .25s,box-shadow .25s,color .25s}
+.btn-primary{background:var(--oxblood);color:#fff;box-shadow:0 14px 30px -18px rgba(124,45,39,.9)}
+.btn-primary:hover{background:var(--oxblood-deep);transform:translateY(-2px);box-shadow:0 20px 36px -18px rgba(124,45,39,.95)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--gold-line)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--oxblood);transform:translateY(-2px)}
+.btn .arw{transition:transform .25s}
+.btn:hover .arw{transform:translateX(3px)}
+
+/* nav */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:20px 34px;background:rgba(246,239,224,.8);backdrop-filter:blur(12px) saturate(1.2);-webkit-backdrop-filter:blur(12px) saturate(1.2);
+  border-bottom:1px solid transparent;transition:padding .3s,box-shadow .3s,border-color .3s}
+header.nav.scrolled{padding:13px 34px;box-shadow:0 1px 0 var(--line);border-color:var(--line)}
+.brand{display:flex;align-items:center;gap:11px;font-family:"Fraunces",serif;font-weight:500;font-size:1.28rem;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.brand .mark{width:27px;height:27px;flex:0 0 auto}
+.brand .tag{font-family:"Hanken Grotesk",sans-serif;font-weight:600;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  border:1px solid var(--gold-line);border-radius:999px;padding:.28em .6em;margin-left:2px;transform:translateY(-1px)}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{color:var(--ink);text-decoration:none;font-size:.92rem;font-weight:500;opacity:.82;transition:opacity .25s,color .25s}
+.nav-links a:hover{opacity:1;color:var(--oxblood)}
+.nav-links a.btn{opacity:1;color:#fff;font-size:.9rem;padding:.62em 1.25em}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--ink)}
+
+/* hero */
+.hero{position:relative;padding:clamp(120px,15vh,180px) 0 clamp(60px,8vh,100px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,72px);align-items:center}
+.hero h1{font-size:clamp(2.7rem,1.9rem + 4.2vw,5rem);font-weight:340;margin:.32em 0 .5em}
+.hero h1 .accent{font-style:italic;color:var(--oxblood)}
+.hero .lede{font-size:clamp(1.08rem,1.02rem + .5vw,1.32rem);max-width:34ch;color:var(--ink-soft);margin-bottom:1.9em}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-note{margin-top:1.7em;font-size:.86rem;color:var(--ink-faint);display:flex;align-items:center;gap:.6em}
+.hero-note .dot{width:7px;height:7px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 4px rgba(63,107,70,.14)}
+.hero-art{position:relative}
+.hero-art .glow{position:absolute;inset:-8% -6% -10% -6%;background:radial-gradient(60% 55% at 55% 42%,rgba(216,184,112,.4),transparent 70%);filter:blur(6px);z-index:0}
+.hero-art svg{position:relative;z-index:1;width:100%;height:auto;filter:drop-shadow(0 40px 60px rgba(90,54,20,.28))}
+
+/* animated intro */
+html.js .anim{opacity:0;transform:translateY(20px)}
+html.js .hero.loaded .anim{opacity:1;transform:none;transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.hero.loaded .d1{transition-delay:.05s}.hero.loaded .d2{transition-delay:.18s}.hero.loaded .d3{transition-delay:.31s}
+.hero.loaded .d4{transition-delay:.44s}.hero.loaded .d5{transition-delay:.6s}
+
+/* reveal on scroll */
+html.js .reveal{opacity:0;transform:translateY(22px)}
+html.js .reveal.in{opacity:1;transform:none;transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+
+/* section shell */
+section{position:relative}
+.band{padding:clamp(64px,9vh,120px) 0}
+.band-paper{background:linear-gradient(180deg,transparent,rgba(255,253,248,.6) 12%,rgba(255,253,248,.6) 88%,transparent)}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--gold-line),transparent);margin:0 auto;max-width:var(--maxw)}
+.center{text-align:center}
+.section-head{max-width:44ch;margin:0 auto 3rem}
+.center .section-head p{margin:.9em auto 0}
+.section-head p{font-size:1.1rem;margin-top:.9em}
+.kicker{display:inline-block;margin-bottom:1.1em}
+.orn{display:block;margin:0 auto 1.4em;width:34px;height:34px;opacity:.9}
+
+/* the loss / manifesto */
+.manifesto{padding:clamp(80px,12vh,150px) 0;text-align:center}
+.manifesto .quote{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(1.7rem,1.2rem + 2.6vw,3.1rem);line-height:1.24;max-width:20ch;margin:0 auto;color:var(--ink)}
+.manifesto .quote em{font-style:italic;color:var(--oxblood)}
+.manifesto .sub{margin:2em auto 0;max-width:46ch;font-size:1.08rem}
+
+/* definition / new book type */
+.def-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,5vw,64px);align-items:center}
+.def-body p{font-size:1.12rem;margin-top:1.1em}
+.def-body p:first-of-type{margin-top:0}
+.dropcap::first-letter{font-family:"Fraunces",serif;font-weight:400;float:left;font-size:3.5em;line-height:.72;padding:.06em .12em 0 0;color:var(--oxblood)}
+.compare{display:grid;gap:14px}
+.compare .row{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow-sm)}
+.compare .row.is-us{border-color:var(--gold);box-shadow:0 20px 44px -28px rgba(176,138,69,.6)}
+.compare .row .ic{width:30px;height:30px;flex:0 0 auto;color:var(--ink-faint)}
+.compare .row.is-us .ic{color:var(--oxblood)}
+.compare .row b{font-family:"Fraunces",serif;font-weight:500;font-size:1.05rem;display:block;margin-bottom:.1em}
+.compare .row span{font-size:.92rem;color:var(--ink-soft)}
+.compare .row .lab{margin-left:auto;font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);font-weight:700;white-space:nowrap}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:step}
+.step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 26px 32px;position:relative;box-shadow:var(--shadow-sm)}
+.step .num{font-family:"Fraunces",serif;font-size:1rem;font-weight:600;color:var(--oxblood);width:38px;height:38px;border:1px solid var(--gold-line);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.step h3{margin-bottom:.5em}
+.step p{font-size:.96rem}
+
+/* inside / keepsake feature list */
+.inside-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(34px,5vw,72px);align-items:center}
+.feat{list-style:none;display:grid;gap:6px}
+.feat li{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--line-2)}
+.feat li:last-child{border-bottom:none}
+.feat .fic{width:40px;height:40px;flex:0 0 auto;color:var(--oxblood);background:rgba(124,45,39,.06);border-radius:12px;display:flex;align-items:center;justify-content:center}
+.feat b{font-family:"Fraunces",serif;font-weight:500;font-size:1.12rem;display:block;margin-bottom:.15em;color:var(--ink)}
+.feat span{font-size:.97rem;color:var(--ink-soft)}
+.book-shot{position:relative}
+.book-shot .glow{position:absolute;inset:0;background:radial-gradient(60% 55% at 50% 45%,rgba(216,184,112,.42),transparent 72%);filter:blur(8px)}
+.book-shot svg{position:relative;filter:drop-shadow(0 44px 60px rgba(90,54,20,.32))}
+
+/* promises */
+.promises{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.promise{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:34px 30px;box-shadow:var(--shadow-sm);text-align:center}
+.promise .pic{width:52px;height:52px;margin:0 auto 20px;color:var(--oxblood)}
+.promise h3{margin-bottom:.5em}
+.promise p{font-size:.97rem}
+
+/* occasions */
+.occasions{padding:clamp(60px,8vh,96px) 0}
+.occ-list{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:2rem}
+.occ{font-family:"Fraunces",serif;font-size:1.05rem;color:var(--ink);background:var(--card);border:1px solid var(--gold-line);border-radius:999px;padding:.55em 1.25em}
+
+/* pricing */
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+.price{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px 30px 34px;display:flex;flex-direction:column;box-shadow:var(--shadow-sm);position:relative}
+.price.feature{border:1.5px solid var(--gold);box-shadow:0 34px 70px -40px rgba(176,138,69,.7);transform:translateY(-8px)}
+.price .ribbon{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--oxblood);color:#fff;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.42em 1em;border-radius:999px;white-space:nowrap}
+.price .tname{font-family:"Fraunces",serif;font-size:1.5rem;color:var(--ink)}
+.price .tsum{font-size:.92rem;color:var(--ink-soft);margin:.35em 0 1.2em;min-height:2.6em}
+.price .amt{font-family:"Fraunces",serif;font-size:2.7rem;font-weight:400;color:var(--oxblood);line-height:1}
+.price .amt small{font-family:"Hanken Grotesk",sans-serif;font-size:.9rem;color:var(--ink-faint);font-weight:500}
+.price ul{list-style:none;margin:1.5em 0 1.8em;display:grid;gap:11px}
+.price ul li{display:flex;gap:11px;align-items:flex-start;font-size:.93rem;color:var(--ink-soft)}
+.price ul li svg{width:17px;height:17px;flex:0 0 auto;color:var(--gold);margin-top:2px}
+.price .btn{width:100%;justify-content:center;margin-top:auto}
+.price.feature .btn-ghost{background:var(--oxblood);color:#fff;border-color:transparent}
+.price.feature .btn-ghost:hover{background:var(--oxblood-deep)}
+.price-note{text-align:center;color:var(--ink-faint);font-size:.9rem;margin-top:2rem}
+.price-note b{color:var(--oxblood);font-weight:600}
+
+/* faq */
+.faq{max-width:760px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line);padding:6px 0}
+.faq summary{cursor:pointer;list-style:none;padding:20px 40px 20px 4px;position:relative;font-family:"Fraunces",serif;font-size:1.18rem;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-family:"Hanken Grotesk";font-size:1.5rem;color:var(--gold);transition:transform .3s}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 40px 22px 4px;font-size:1rem;color:var(--ink-soft)}
+
+/* begin / cta */
+.begin{position:relative;margin:clamp(40px,6vh,80px) 0 0;padding:clamp(70px,10vh,120px) 0;text-align:center;
+  background:radial-gradient(90% 130% at 50% 0%,rgba(124,45,39,.05),transparent 60%)}
+.begin h2{margin-bottom:.4em}
+.begin .lede{max-width:40ch;margin:0 auto 2.2em;font-size:1.12rem}
+.reserve{display:flex;gap:10px;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.reserve input{flex:1;min-width:220px;font-family:"Hanken Grotesk";font-size:1rem;padding:.9em 1.2em;border-radius:999px;border:1px solid var(--gold-line);background:var(--card);color:var(--ink);outline:none;transition:border-color .25s,box-shadow .25s}
+.reserve input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(176,138,69,.16)}
+.reserve .btn{white-space:nowrap}
+.begin .fine{margin-top:1.4em;font-size:.85rem;color:var(--ink-faint)}
+
+/* footer */
+footer{border-top:1px solid var(--line);margin-top:0;padding:56px 0 60px;background:linear-gradient(180deg,transparent,rgba(239,225,201,.35))}
+.foot{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:start}
+.foot .brand{font-size:1.15rem;margin-bottom:.7em}
+.foot .tagline{font-family:"Fraunces",serif;font-style:italic;font-size:1.05rem;color:var(--ink-soft);max-width:30ch}
+.foot .meta{text-align:right;font-size:.86rem;color:var(--ink-faint)}
+.foot .meta a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--gold-line)}
+.foot .meta a:hover{color:var(--oxblood)}
+.foot .sibling{margin-top:1.1em;font-size:.82rem;color:var(--ink-faint)}
+
+@media (max-width:900px){
+  .hero-grid,.def-grid,.inside-grid{grid-template-columns:1fr}
+  .hero-art{order:-1;max-width:440px;margin:0 auto}
+  .def-grid .compare{order:2}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .promises{grid-template-columns:1fr}
+  .prices{grid-template-columns:1fr;max-width:440px;margin:0 auto}
+  .price.feature{transform:none}
+  .book-shot{max-width:420px;margin:0 auto}
+}
+@media (max-width:680px){
+  header.nav{padding:15px 22px}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;
+    background:var(--paper-2);padding:22px;gap:18px;border-bottom:1px solid var(--line);box-shadow:0 24px 40px -30px rgba(0,0,0,.4)}
+  .nav-links.open{display:flex}
+  .nav-links a.btn{width:100%;justify-content:center}
+  .nav-toggle{display:block}
+  .steps{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr}.foot .meta{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){
+  html.js .anim,html.js .reveal{opacity:1!important;transform:none!important}
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="brand" href="/">
+    <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 2c3 4 3 8 0 12-3-4-3-8 0-12z" fill="#7c2d27"/>
+      <path d="M12 14c2.4-3 7-3.6 9.6-2.2C19 16 15.6 18.4 12 18c-3.6.4-7-2-9.6-6.2C5 10.4 9.6 11 12 14z" fill="#bd9347"/>
+      <line x1="12" y1="14" x2="12" y2="22" stroke="#211b14" stroke-width="1.3" stroke-linecap="round"/>
+    </svg>
+    Coach Libra<span class="tag">Legacy</span>
+  </a>
+  <nav class="nav-links" id="navlinks">
+    <a href="#book">The book</a>
+    <a href="#how">How it works</a>
+    <a href="#inside">What's inside</a>
+    <a href="#pricing">Pricing</a>
+    <a class="btn btn-primary" href="#begin">Begin their book</a>
+  </nav>
+  <button class="nav-toggle" id="navtoggle" aria-label="Menu">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+  </button>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow anim d1">A gift for the people who raised us</span>
+      <h1 class="anim d2">The stories only <span class="accent">they</span> can tell.</h1>
+      <p class="lede anim d3">Turn your mom or dad's life into a beautiful keepsake book — captured in their own voice, written in their own words, and kept for every generation that follows. They just talk. We do the rest.</p>
+      <div class="hero-cta anim d4">
+        <a href="#begin" class="btn btn-primary">Begin their book <span class="arw">→</span></a>
+        <a href="#how" class="btn btn-ghost">See how it works</a>
+      </div>
+      <div class="hero-note anim d5"><span class="dot"></span> No typing, no apps for them — and a finished book, guaranteed.</div>
+    </div>
+    <div class="hero-art anim d3" aria-hidden="true">
+      <div class="glow"></div>
+      <svg viewBox="0 0 420 400" role="img" aria-label="An open keepsake book with a voice waveform rising into words and a scannable code that plays their voice">
+        <defs>
+          <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fffdf8"/><stop offset="1" stop-color="#f4e9d3"/>
+          </linearGradient>
+          <linearGradient id="cover" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8a352c"/><stop offset="1" stop-color="#5e211d"/>
+          </linearGradient>
+        </defs>
+        <!-- back cover -->
+        <rect x="54" y="150" width="312" height="210" rx="12" fill="url(#cover)"/>
+        <!-- pages -->
+        <path d="M70 168 Q210 150 350 168 L350 350 Q210 332 70 350 Z" fill="url(#pg)" stroke="#e6d6b7" stroke-width="1.5"/>
+        <line x1="210" y1="158" x2="210" y2="341" stroke="#e2cfa9" stroke-width="2"/>
+        <!-- left page text lines -->
+        <g stroke="#cdb98f" stroke-width="3" stroke-linecap="round">
+          <line x1="96" y1="196" x2="188" y2="192"/><line x1="96" y1="212" x2="184" y2="209"/>
+          <line x1="96" y1="228" x2="190" y2="225"/><line x1="96" y1="244" x2="172" y2="242"/>
+          <line x1="96" y1="286" x2="188" y2="284"/><line x1="96" y1="302" x2="180" y2="300"/>
+          <line x1="96" y1="318" x2="186" y2="316"/>
+        </g>
+        <!-- right page: a photo + lines -->
+        <rect x="234" y="188" width="96" height="70" rx="6" fill="#e9d9b8" stroke="#d8c295" stroke-width="1.5"/>
+        <circle cx="264" cy="220" r="12" fill="#c9a86e"/><path d="M246 250 q18-26 40 0 q10-14 24 0" fill="#c9a86e"/>
+        <g stroke="#cdb98f" stroke-width="3" stroke-linecap="round">
+          <line x1="234" y1="280" x2="326" y2="278"/><line x1="234" y1="296" x2="318" y2="294"/><line x1="234" y1="312" x2="322" y2="310"/>
+        </g>
+        <!-- QR chip lower right -->
+        <g transform="translate(300,300)">
+          <rect x="0" y="0" width="34" height="34" rx="5" fill="#fffdf8" stroke="#7c2d27" stroke-width="1.5"/>
+          <rect x="5" y="5" width="9" height="9" fill="#7c2d27"/><rect x="20" y="5" width="9" height="9" fill="#7c2d27"/>
+          <rect x="5" y="20" width="9" height="9" fill="#7c2d27"/><rect x="21" y="21" width="4" height="4" fill="#7c2d27"/><rect x="28" y="25" width="4" height="4" fill="#7c2d27"/>
+        </g>
+        <!-- voice waveform rising -->
+        <g transform="translate(150,44)">
+          <g stroke="#b08a45" stroke-width="4.5" stroke-linecap="round">
+            <line x1="0" y1="24" x2="0" y2="60"/><line x1="16" y1="8" x2="16" y2="76"/><line x1="32" y1="30" x2="32" y2="54"/>
+            <line x1="48" y1="0" x2="48" y2="84"/><line x1="64" y1="22" x2="64" y2="62"/><line x1="80" y1="14" x2="80" y2="70"/><line x1="96" y1="34" x2="96" y2="50"/>
+          </g>
+          <path d="M104 42 q26 0 40 96" fill="none" stroke="#d8b870" stroke-width="2" stroke-dasharray="3 5" opacity=".8"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- MANIFESTO / THE LOSS -->
+<section class="manifesto">
+  <div class="wrap">
+    <p class="quote reveal">Everyone has a story worth keeping. <em>Most are lost anyway.</em></p>
+    <p class="sub reveal">Not because no one cared — because no one sat down in time. The recipes, the war years, how they met, the road that led to you. A legacy book is how you make sure the stories outlast the storyteller.</p>
+  </div>
+</section>
+
+<!-- THE NEW BOOK TYPE -->
+<section class="band band-paper" id="book">
+  <div class="wrap def-grid">
+    <div class="def-body reveal">
+      <span class="eyebrow kicker">A new kind of book</span>
+      <h2>Not a memoir. Not a photo album.<br>A <em>family legacy</em> book.</h2>
+      <p class="dropcap" style="margin-top:1.3em">Warmer than a biography, richer than a photo album — and far more personal than either. A family legacy book weaves your parent's real stories, told in their own voice, together with the photographs that hold them.</p>
+      <p>It's made to be read aloud at the table, pressed into a grandchild's hands, and handed down for a hundred years. Their humor, their turns of phrase, the way only they would say it — kept exactly as it was.</p>
+    </div>
+    <div class="compare reveal">
+      <div class="row"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg><div><b>A memoir</b><span>All words, written alone. Powerful — but most never get finished.</span></div></div>
+      <div class="row"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m4 18 5-4 4 3 3-2 4 3"/></svg><div><b>A photo album</b><span>All pictures, no voice. Beautiful — but the stories behind them fade.</span></div></div>
+      <div class="row is-us"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6v14"/></svg><div><b>A family legacy book</b><span>Their stories, their voice, their photographs — woven into one keepsake.</span></div><span class="lab">Ours</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- HOW IT WORKS -->
+<section class="band" id="how">
+  <div class="wrap center">
+    <div class="section-head">
+      <span class="eyebrow kicker">How it works</span>
+      <h2>Effortless for them.<br>Unforgettable for you.</h2>
+      <p>The whole point is that your parent does almost nothing but talk. Everything else is ours to carry.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h3>You give the gift</h3><p>Choose a package and tell us a little about your mom or dad. We take it from there — no setup for them.</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>They just talk</h3><p>Each week we ask one gentle question — by phone, or a single tap on a text. No typing, no apps, no passwords. Rather reminisce over a call? We'll call.</p></div>
+      <div class="step reveal"><div class="num">3</div><h3>We listen &amp; write</h3><p>A real coach shapes their answers into warm, readable chapters — their exact words, never invented, never flattened into someone else's voice.</p></div>
+      <div class="step reveal"><div class="num">4</div><h3>A keepsake arrives</h3><p>A premium hardcover with their photographs woven in and their real voice tucked inside — plus copies for the whole family.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="band band-paper" id="inside">
+  <div class="wrap inside-grid">
+    <div class="book-shot reveal" aria-hidden="true">
+      <div class="glow"></div>
+      <svg viewBox="0 0 360 400" role="img" aria-label="A premium linen hardcover legacy book standing upright">
+        <defs><linearGradient id="lc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a352c"/><stop offset="1" stop-color="#5e211d"/></linearGradient></defs>
+        <ellipse cx="188" cy="372" rx="128" ry="16" fill="rgba(90,54,20,.16)"/>
+        <rect x="70" y="40" width="210" height="316" rx="8" fill="url(#lc)"/>
+        <rect x="70" y="40" width="24" height="316" rx="6" fill="#4a1a17"/>
+        <rect x="104" y="66" width="150" height="264" rx="3" fill="none" stroke="#b08a45" stroke-width="1.5" opacity=".7"/>
+        <!-- gold title -->
+        <g fill="#d8b870">
+          <rect x="128" y="120" width="104" height="6" rx="3"/><rect x="146" y="136" width="68" height="6" rx="3"/>
+        </g>
+        <!-- little leaf ornament -->
+        <path d="M180 190c9 12 9 24 0 36-9-12-9-24 0-36z" fill="#d8b870" opacity=".9"/>
+        <path d="M180 226c7-9 21-11 29-7-8 12-18 20-29 18-11 2-21-6-29-18 8-4 22-2 29 7z" fill="#b08a45" opacity=".85"/>
+        <g fill="#e9cf9a" opacity=".8"><rect x="132" y="286" width="96" height="4" rx="2"/><rect x="146" y="298" width="68" height="4" rx="2"/></g>
+      </svg>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow kicker">The keepsake</span>
+      <h2>An heirloom, not a printout.</h2>
+      <ul class="feat">
+        <li><span class="fic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1z"/></svg></span><div><b>A premium linen hardcover</b><span>Foil-stamped and printed to last generations — the kind of book that earns a place on the shelf.</span></div></li>
+        <li><span class="fic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.8"/><path d="m4 17 5-4 3 2 4-3 4 3"/></svg></span><div><b>Their photographs, woven in</b><span>Pictures sit beside the very stories they belong to — never dumped in a gallery at the back.</span></div></li>
+        <li><span class="fic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M8 7v10M4 10v4M16 7v10M20 10v4"/></svg></span><div><b>Their real voice, inside the book</b><span>Scan a page and hear them tell it — their laugh, their pauses, exactly as they said it.</span></div></li>
+        <li><span class="fic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></span><div><b>An optional audiobook — in their voice</b><span>The whole story, narrated by them, to keep and to play for the grandchildren who never got to ask.</span></div></li>
+        <li><span class="fic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></svg></span><div><b>A private archive, kept forever</b><span>Every recording and photo, yours to keep and export. If we ever close our doors, your family keeps everything.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- PROMISES -->
+<section class="band">
+  <div class="wrap center">
+    <div class="section-head">
+      <span class="eyebrow kicker">Our promises</span>
+      <h2>The things everyone else gets wrong.</h2>
+    </div>
+    <div class="promises">
+      <div class="promise reveal">
+        <svg class="pic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M24 6v36M16 14v20M8 20v8M32 14v20M40 20v8"/></svg>
+        <h3>Their real voice</h3>
+        <p>We preserve their exact words. We never fabricate a memory or smooth their voice into generic prose. It sounds like them because it <em>is</em> them.</p>
+      </div>
+      <div class="promise reveal">
+        <svg class="pic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 25l9 9 19-21"/><circle cx="24" cy="24" r="21" opacity=".28"/></svg>
+        <h3>A finished book — guaranteed</h3>
+        <p>Getting a parent to the finish line is the one thing everyone else fails at. We keep things moving gently, and we promise a complete, beautiful book — even from a handful of stories.</p>
+      </div>
+      <div class="promise reveal">
+        <svg class="pic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M24 6 8 12v11c0 10 7 16 16 19 9-3 16-9 16-19V12z"/><path d="M17 24l5 5 9-10"/></svg>
+        <h3>Kept forever</h3>
+        <p>Lifetime access, yours to export and keep. A legacy shouldn't depend on a login — so if we ever disappear, your family still has everything.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OCCASIONS -->
+<section class="occasions band-paper">
+  <div class="wrap center">
+    <span class="eyebrow kicker reveal">For every reason to say it now</span>
+    <h2 class="reveal" style="max-width:20ch;margin:0 auto">Some gifts can wait.<br>This one can't.</h2>
+    <div class="occ-list reveal">
+      <span class="occ">Mother's Day</span><span class="occ">Father's Day</span><span class="occ">A milestone birthday</span>
+      <span class="occ">The holidays</span><span class="occ">A new grandchild</span><span class="occ">A retirement</span>
+      <span class="occ">An anniversary</span><span class="occ">Simply because they're still here to ask</span>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- PRICING -->
+<section class="band" id="pricing">
+  <div class="wrap center">
+    <div class="section-head">
+      <span class="eyebrow kicker">Choose their book</span>
+      <h2>One price. Everything included.</h2>
+      <p>No subscriptions, no surprise fees, no printing charged to your parent. Just a beautiful book, done right.</p>
+    </div>
+    <div class="prices">
+      <div class="price reveal">
+        <div class="tname">Keepsake</div>
+        <div class="tsum">Their stories, in their voice, in one beautiful hardcover.</div>
+        <div class="amt">$99</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Weekly questions, by phone or one tap</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Done-for-you writing — their real words</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>One premium hardcover + digital archive</li>
+        </ul>
+        <a href="#begin" class="btn btn-ghost">Begin their book</a>
+      </div>
+      <div class="price feature reveal">
+        <span class="ribbon">Most loved</span>
+        <div class="tname">Signature</div>
+        <div class="tsum">Guided interviews, their voice inside the book, copies for everyone.</div>
+        <div class="amt">$499</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Everything in Keepsake</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Guided voice interviews with real follow-ups</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>A coach's editorial pass + finished-book guarantee</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Their voice inside the book (scan &amp; hear)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Three hardcover copies for the family</li>
+        </ul>
+        <a href="#begin" class="btn btn-ghost">Begin their book</a>
+      </div>
+      <div class="price reveal">
+        <div class="tname">Heirloom</div>
+        <div class="tsum">Our white-glove edition — for the story you can't get less than perfect.</div>
+        <div class="amt">$1,499</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Everything in Signature</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>A personal historian &amp; deeper interviews</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Restored photographs &amp; an audiobook in their voice</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Heirloom-bound edition &amp; five copies</li>
+        </ul>
+        <a href="#begin" class="btn btn-ghost">Begin their book</a>
+      </div>
+    </div>
+    <p class="price-note reveal"><b>Founding-family pricing</b> during our launch season. Add extra copies, an audiobook, or photo restoration any time. Facing a hard deadline? Ask about our rapid keepsake.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="band band-paper">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow kicker">Gentle answers</span>
+      <h2>The questions families ask.</h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary>What if my parent isn't good with technology?</summary><p>That's exactly who we built this for. They can answer by phone call, or one tap on a text message — no apps, no passwords, nothing to install. If they ever get stuck, a real person is a phone call away.</p></details>
+      <details><summary>What if they don't finish?</summary><p>They will. Getting a reluctant storyteller across the finish line is the single thing we're best at — gentle pacing, real encouragement, and a promise that a beautiful, complete book arrives no matter what. You will never end up with blank pages.</p></details>
+      <details><summary>Whose words end up in the book?</summary><p>Theirs. Always. We arrange and lightly polish their own stories so they read beautifully — but we never invent a memory or replace their voice with ours. This is a legacy of <em>their</em> words, not ours.</p></details>
+      <details><summary>Can we make one for a parent who has passed?</summary><p>Yes — tenderly. We can build a legacy book from their recordings, letters, and the memories of the people who loved them. Reach out and we'll guide your family through it with care.</p></details>
+      <details><summary>How long does it take?</summary><p>Most families finish in a few unhurried months of once-a-week storytelling. If you're working against a milestone or precious time, ask about our rapid keepsake — we can move quickly when it matters.</p></details>
+      <details><summary>Is their voice really in the book?</summary><p>Yes. Scan a page and you'll hear them tell that very story — their laugh, their pauses, their way of saying it. It's the closest thing to sitting beside them again.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- BEGIN / CTA -->
+<section class="begin" id="begin">
+  <div class="wrap">
+    <span class="eyebrow kicker reveal">Now welcoming our founding families</span>
+    <h2 class="reveal">Give them the gift of being heard.</h2>
+    <p class="lede reveal">Leave your email and we'll help you begin your mom or dad's book — gently, and at your pace.</p>
+    <form class="reserve reveal" id="reserveForm">
+      <input type="email" id="reserveEmail" placeholder="your@email.com" aria-label="Your email" required />
+      <button type="submit" class="btn btn-primary">Begin their book <span class="arw">→</span></button>
+    </form>
+    <p class="fine reveal">Or write to us directly at <a href="mailto:hello@coachlibra.org" style="color:var(--oxblood)">hello@coachlibra.org</a>. No commitment — just a conversation.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="brand" href="/">
+        <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2c3 4 3 8 0 12-3-4-3-8 0-12z" fill="#7c2d27"/>
+          <path d="M12 14c2.4-3 7-3.6 9.6-2.2C19 16 15.6 18.4 12 18c-3.6.4-7-2-9.6-6.2C5 10.4 9.6 11 12 14z" fill="#bd9347"/>
+        </svg>
+        Coach Libra<span class="tag">Legacy</span>
+      </a>
+      <p class="tagline">Their voice. Their story. Kept forever.</p>
+      <p class="sibling">Also from Coach Libra — books for founders &amp; leaders at <a href="https://coachlibra.com" style="color:var(--ink-soft)">coachlibra.com</a>.</p>
+    </div>
+    <div class="meta">
+      <p>© <span id="yr">2026</span> Coach Libra</p>
+      <p style="margin-top:.4em"><a href="mailto:hello@coachlibra.org">hello@coachlibra.org</a></p>
+      <p style="margin-top:.4em"><a href="/privacy">Privacy</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+ try{
+  var y=document.getElementById('yr'); if(y){y.textContent=new Date().getFullYear();}
+  var nav=document.getElementById('nav'),tg=document.getElementById('navtoggle'),nl=document.getElementById('navlinks');
+  if(tg&&nl){tg.addEventListener('click',function(){nl.classList.toggle('open');});
+    nl.addEventListener('click',function(e){if(e.target.tagName==='A'){nl.classList.remove('open');}});}
+  window.addEventListener('scroll',function(){if(nav){nav.classList.toggle('scrolled',window.scrollY>12);}},{passive:true});
+
+  // hero intro
+  var hero=document.querySelector('.hero');
+  requestAnimationFrame(function(){requestAnimationFrame(function(){if(hero)hero.classList.add('loaded');});});
+
+  // scroll reveal
+  var els=[].slice.call(document.querySelectorAll('.reveal'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    els.forEach(function(el){io.observe(el);});
+  } else { els.forEach(function(el){el.classList.add('in');}); }
+
+  // reserve form -> mailto (no backend yet)
+  var f=document.getElementById('reserveForm');
+  if(f){f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var em=(document.getElementById('reserveEmail').value||'').trim();
+    var subj=encodeURIComponent("I'd like to begin a legacy book");
+    var body=encodeURIComponent("Hi Coach Libra Legacy team,\n\nI'd like to begin a family legacy book"+(em?(" — my email is "+em):"")+".\n\nA little about who it's for:\n");
+    window.location.href="mailto:hello@coachlibra.org?subject="+subj+"&body="+body;
+  });}
+ }catch(err){ /* failsafe: never leave content hidden if JS breaks */ document.documentElement.className=''; }
+})();
+</script>
+</body>
+</html>
