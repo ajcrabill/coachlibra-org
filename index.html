@@ -169,12 +169,14 @@ section{position:relative}
 .price.feature{border:1.5px solid var(--gold);box-shadow:0 34px 70px -40px rgba(176,138,69,.7);transform:translateY(-8px)}
 .price .ribbon{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--oxblood);color:#fff;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.42em 1em;border-radius:999px;white-space:nowrap}
 .price .tname{font-family:"Fraunces",serif;font-size:1.5rem;color:var(--ink)}
-.price .tsum{font-size:.92rem;color:var(--ink-soft);margin:.35em 0 1.2em;min-height:2.6em}
+.price .tsum{font-size:.92rem;color:var(--ink-soft);margin:.35em 0 1.2em;min-height:3.4em}
 .price .amt{font-family:"Fraunces",serif;font-size:2.7rem;font-weight:400;color:var(--oxblood);line-height:1}
 .price .amt small{font-family:"Hanken Grotesk",sans-serif;font-size:.9rem;color:var(--ink-faint);font-weight:500}
 .price ul{list-style:none;margin:1.5em 0 1.8em;display:grid;gap:11px}
 .price ul li{display:flex;gap:11px;align-items:flex-start;font-size:.93rem;color:var(--ink-soft)}
 .price ul li svg{width:17px;height:17px;flex:0 0 auto;color:var(--gold);margin-top:2px}
+.price ul li.mq{font-family:"Fraunces",serif;font-weight:500;font-size:1.05rem;line-height:1.28;color:var(--ink);align-items:center;padding-bottom:13px;border-bottom:1px solid var(--gold-line);margin-bottom:5px}
+.price ul li.mq svg{width:19px;height:19px;color:var(--oxblood);margin-top:0}
 .price .btn{width:100%;justify-content:center;margin-top:auto}
 .price.feature .btn-ghost{background:var(--oxblood);color:#fff;border-color:transparent}
 .price.feature .btn-ghost:hover{background:var(--oxblood-deep)}
@@ -462,6 +464,7 @@ footer{border-top:1px solid var(--line);margin-top:0;padding:56px 0 60px;backgro
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Weekly questions, by phone or one tap</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Done-for-you writing — their real words</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Their voice inside the book — scan &amp; hear</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>One premium hardcover + digital archive</li>
         </ul>
         <a href="#begin" class="btn btn-ghost">Begin their book</a>
@@ -469,25 +472,26 @@ footer{border-top:1px solid var(--line);margin-top:0;padding:56px 0 60px;backgro
       <div class="price feature reveal">
         <span class="ribbon">Most loved</span>
         <div class="tname">Signature</div>
-        <div class="tsum">Guided interviews, their voice inside the book, copies for everyone.</div>
+        <div class="tsum">A finished book, guaranteed — plus guided interviews and copies for the whole family.</div>
         <div class="amt">$499</div>
         <ul>
+          <li class="mq"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2l2.8 6 6.6.7-4.9 4.5 1.3 6.5L12 17.9 6.2 20.4l1.3-6.5L2.6 8.9l6.6-.7z"/></svg>A finished book — guaranteed</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Everything in Keepsake</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Guided voice interviews with real follow-ups</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>A coach's editorial pass + finished-book guarantee</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Their voice inside the book (scan &amp; hear)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>A dedicated coach's editorial pass</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Three hardcover copies for the family</li>
         </ul>
         <a href="#begin" class="btn btn-ghost">Begin their book</a>
       </div>
       <div class="price reveal">
         <div class="tname">Heirloom</div>
-        <div class="tsum">Our white-glove edition — for the story you can't get less than perfect.</div>
+        <div class="tsum">Our white-glove edition — their whole story, in their own voice, done to perfection.</div>
         <div class="amt">$1,499</div>
         <ul>
+          <li class="mq"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2l2.8 6 6.6.7-4.9 4.5 1.3 6.5L12 17.9 6.2 20.4l1.3-6.5L2.6 8.9l6.6-.7z"/></svg>An audiobook in their own voice — the ultimate scan &amp; hear</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Everything in Signature</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>A personal historian &amp; deeper interviews</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Restored photographs &amp; an audiobook in their voice</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Restored photographs, hand-finished</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>Heirloom-bound edition &amp; five copies</li>
         </ul>
         <a href="#begin" class="btn btn-ghost">Begin their book</a>
