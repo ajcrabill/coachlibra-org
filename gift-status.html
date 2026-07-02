@@ -1,0 +1,60 @@
+---
+layout: default
+title: "Your gift's progress — Coach Libra Legacy"
+description: "Check on how your family's legacy book is coming along."
+---
+<article class="prose" id="gs">
+  <h1>Your gift's progress</h1>
+  <p class="lede" id="gs-lede">One moment — looking up your book…</p>
+  <div id="gs-card" style="display:none;border:1px solid rgba(0,0,0,.12);border-radius:12px;padding:1.4rem 1.6rem;margin:1.2rem 0;">
+    <p style="margin:.2rem 0;font-size:1.15rem;" id="gs-stage"></p>
+    <p style="margin:.6rem 0 0;color:#555;" id="gs-next"></p>
+    <p style="margin:.9rem 0 0;color:#555;display:none;" id="gs-title"></p>
+  </div>
+  <div id="gs-help" style="display:none;">
+    <h2>What you can — and can't — see here</h2>
+    <p>This page shows where the book stands: which stage it's in and what happens
+    next. It never shows the stories themselves. While we work, your storyteller's
+    answers stay between them and their coach — the finished book is theirs to share
+    with you. That privacy is a promise we make to them, and it's part of why the
+    stories come out true.</p>
+    <p>If your storyteller would like you to see a little more — the book's working
+    title and how many chapters they've confirmed — they can turn on sharing from
+    their own portal. It's off unless they choose it.</p>
+    <p>Questions, or want to add photos to the book? Just write to
+    <a href="mailto:hello@coachlibra.org">hello@coachlibra.org</a> — include the
+    email address you purchased with.</p>
+  </div>
+  <p id="gs-error" style="display:none;">We couldn't find a book for this link.
+  Double-check the link from your confirmation email, or write to
+  <a href="mailto:hello@coachlibra.org">hello@coachlibra.org</a> and we'll sort it
+  out.</p>
+</article>
+<script>
+(function(){
+  // status API on the engine; swap to https://api.coachlibra.com once live
+  var API_BASE="https://esbcloud.taild49f53.ts.net";
+  var t=new URLSearchParams(location.search).get("t");
+  var lede=document.getElementById("gs-lede");
+  if(!t){lede.style.display="none";document.getElementById("gs-error").style.display="block";return;}
+  fetch(API_BASE+"/gift/"+encodeURIComponent(t)+"/status")
+    .then(function(r){if(!r.ok)throw 0;return r.json();})
+    .then(function(d){
+      lede.style.display="none";
+      document.getElementById("gs-card").style.display="block";
+      document.getElementById("gs-help").style.display="block";
+      document.getElementById("gs-stage").textContent=d.stage;
+      document.getElementById("gs-next").textContent=d.next_milestone;
+      if(d.sharing&&d.working_title){
+        var el=document.getElementById("gs-title");
+        el.style.display="block";
+        el.textContent="Working title: “"+d.working_title+"”"+
+          (typeof d.chapters_confirmed==="number"
+            ? " — "+d.chapters_confirmed+" chapter"+(d.chapters_confirmed===1?"":"s")+" confirmed so far."
+            : "");
+      }
+    })
+    .catch(function(){lede.style.display="none";
+      document.getElementById("gs-error").style.display="block";});
+})();
+</script>
