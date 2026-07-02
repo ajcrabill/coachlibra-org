@@ -43,14 +43,27 @@
     els.forEach(function(el){io.observe(el);});
   } else { els.forEach(function(el){el.classList.add('in');}); }
 
-  // reserve form -> mailto (no backend yet)
+  // reserve form -> the engine's waitlist API (vertical-tagged), mailto as the
+  // failure fallback so a signup is never lost to an API hiccup.
+  // API base: swap to https://api.coachlibra.com once the domain is live.
+  var API_BASE="https://esbcloud.taild49f53.ts.net";
   var f=document.getElementById('reserveForm');
   if(f){f.addEventListener('submit',function(e){
     e.preventDefault();
     var em=(document.getElementById('reserveEmail').value||'').trim();
-    var subj=encodeURIComponent("I'd like to begin a legacy book");
-    var body=encodeURIComponent("Hi Coach Libra Legacy team,\n\nI'd like to begin a family legacy book"+(em?(" — my email is "+em):"")+".\n\nA little about who it's for:\n");
-    window.location.href="mailto:hello@coachlibra.org?subject="+subj+"&body="+body;
+    if(!em){return;}
+    var btn=f.querySelector('button[type=submit]');
+    if(btn){btn.disabled=true;btn.textContent='Reserving…';}
+    var fallback=function(){
+      var subj=encodeURIComponent("I'd like to begin a legacy book");
+      var body=encodeURIComponent("Hi Coach Libra Legacy team,\n\nI'd like to begin a family legacy book — my email is "+em+".\n\nA little about who it's for:\n");
+      window.location.href="mailto:hello@coachlibra.org?subject="+subj+"&body="+body;
+    };
+    fetch(API_BASE+"/waitlist",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({email:em,vertical:"coachlibra_org",note:"coachlibra.org reserve form"})})
+      .then(function(r){if(!r.ok){throw new Error("bad status");}
+        f.innerHTML='<p class="fine" style="font-size:1.05rem">You\u2019re on the list. We\u2019ll be in touch about their book very soon.</p>';})
+      .catch(function(){if(btn){btn.disabled=false;btn.textContent='Begin their book \u2192';}fallback();});
   });}
  }catch(err){ /* failsafe: never leave content hidden if JS breaks */ document.documentElement.className=''; }
 })();
